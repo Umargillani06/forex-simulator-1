@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umar Terminal</title>
+    <style>
+        body { background: #0f1117; color: white; font-family: sans-serif; text-align: center; margin: 0; }
+        .header { background: #1e222d; padding: 20px; border-bottom: 1px solid #333; }
+        .balance { font-size: 2.2em; color: #26a69a; font-weight: bold; margin: 10px 0; }
+        .lev-badge { background: #2196F3; padding: 5px 15px; border-radius: 20px; font-size: 0.9em; display: inline-block; }
+        .btn { padding: 18px; width: 90%; margin: 10px auto; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1em; cursor: pointer; display: block; background: #26a69a; color: white; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="lev-badge" id="leverage-tag">1:Unlimited</div>
+        <div class="balance" id="display-bal">$5,000.00</div>
+    </div>
+    <div style="padding: 20px;">
+        <p>Investor Demo Mode:</p>
+        <button class="btn" onclick="updateBal(6000)">Add Profit +$6,000</button>
+    </div>
+    <script>
+        let balance = 5000;
+        function updateBal(amount) {
+            balance += amount;
+            document.getElementById('display-bal').innerText = "$" + balance.toLocaleString();
+            if(balance >= 10000) {
+                document.getElementById('leverage-tag').innerText = "1:500 (Capped)";
+                document.getElementById('leverage-tag').style.background = "#ff9800";
+            }
+        }
+    </script>
+</body>
+</html>
